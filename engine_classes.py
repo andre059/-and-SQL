@@ -40,6 +40,8 @@ class HH(Engine):
         response.close()
         js_hh = json.loads(data)
 
+        with open("data_file_общий.json", "w", encoding="UTF-8") as f:
+            json.dump(js_hh, f)
         # print(js_hh)
         return js_hh
 
@@ -50,8 +52,7 @@ class HH(Engine):
             'name': data.get('name'),
             'url': data.get('alternate_url'),
             'description': data.get('snippet').get('responsibility'),
-            'employer': data.get('employer').get('id', 'name'),
-            # 'employer': data.get('employer').get('name'),
+            'employer': {'id': data.get('employer').get('id'), 'name': data.get('employer').get('name')},
             'salary': data.get('salary', {}).get('from', 0),
             'date_published': data.get('published_at'),
 
@@ -161,8 +162,8 @@ class SuperJob(Engine):
 
 
 
-# search_keyword = 'Python'
-# rt = HH(search_keyword)
-# rt.get_request()
+search_keyword = 'Python'
+rt = HH(search_keyword)
+rt.get_request()
 # rt.get_info()
-# rt.get_vacancies()
+rt.get_vacancies()
