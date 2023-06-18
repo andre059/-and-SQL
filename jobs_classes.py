@@ -8,7 +8,6 @@ class Vacancy:
         self.name = name
         self.url = url
         self.description = description
-        # self.id = id_
         self.employer = employer
         self.salary = salary
         self.date_published = date_published
@@ -17,7 +16,7 @@ class Vacancy:
         return self.date_published < other.date_published
 
     def __str__(self):
-        return f'Работодатель - {self.employer} \n;'
+        return f'Работодатель - {self.employer}, вакансия - {self.name} \n;'
 
     def to_dict(self):
         return {
@@ -35,10 +34,10 @@ class HHVacancy(Vacancy):
     """ HeadHunter Vacancy """
 
     def __repr__(self):
-        return f"HH: {self.employer} \n;"
+        return f"HH: {self.employer}, вакансия - {self.name} \n;"
 
     def __str__(self):
-        return f'HH:  {self.employer} \n;'
+        return f'HH:  {self.employer}, вакансия - {self.name} \n;'
 
     @property
     def max_salary(self):
