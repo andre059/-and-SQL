@@ -1,5 +1,4 @@
 import psycopg2
-import self
 
 from config import config
 
@@ -26,25 +25,41 @@ class DBManager:
         try:
             with conn:
                 with conn.cursor() as cur:
-                    cur.execute('CREATE TABL IF NOT EXISTS emploers'
-                                '('
-                                'employer_id PRIMARY KEY,'
-                                'employer_name varchar(255) UNIQUE NOT NULL)')
+                    cur.execute("""CREATE TABL IF NOT EXISTS employers
+                                    (
+                                        employer_id PRIMARY KEY,
+                                        employer_name varchar(255) UNIQUE NOT NULL
+                                    )
+                                """)
 
-                    cur.execute('CREATE TABL IF NOT EXISTS  vacansies'
-                                '('
-                                'vacancy_id int PRIMARY KEY,'
-                                'vacancy_name varchar(255) UNIQUE NOT NULL,'
-                                'employer_id int REFERENCES employers(employer_id) NOT NULL,'
-                                'city varchar(255),'
-                                'url text,'
-                                'solary int)')
+                    cur.execute("""CREATE TABL IF NOT EXISTS  vacancies
+                                    (
+                                        vacancy_id int PRIMARY KEY,
+                                        vacancy_name varchar(255) UNIQUE NOT NULL,
+                                        employer_id int REFERENCES employers(employer_id) NOT NULL,
+                                        city varchar(255),
+                                        url text,
+                                        solary int
+                                    )
+                                """)
         finally:
             conn.close()
 
     def get_companies_and_vacancies_count(self):
         """Получает список всех компаний и количество вакансий у каждой компании"""
-        pass
+
+        conn = psycopg2.connect(dbname=self.dbname, **self.params)
+        try:
+            with conn:
+                with conn.cursor() as cur:
+                    cur.execute("""CREATE TABL IF NOT EXISTS  companies vacancies count
+                                    (
+                                        employer_name varchar(255) UNIQUE NOT NULL,
+                                        count_vacancies int 
+                                    )
+                                """)
+        finally:
+            conn.close()
 
     def get_all_vacancies(self):
         """Получает список всех вакансий с указанием названия компании,
