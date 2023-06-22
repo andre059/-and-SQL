@@ -15,7 +15,7 @@ class HH:
 
     def get_request(self):
         """Возвращает вакансий с НН.ру"""
-        with open("data_file_общий.json", "w", encoding="UTF-8") as f:
+        with open("data_file_общий.json", "w", encoding="cp1251") as f:
             json.dump(self.vacancy_list, f)
         # print(self.vacancy_list)
         return self.vacancy_list

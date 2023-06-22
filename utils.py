@@ -4,7 +4,7 @@ from HH_ID import HH
 
 
 def get_key_by_order(filename, order):
-    with open(filename, 'r') as f:
+    with open(filename, 'r', encoding="cp1251") as f:
         data = json.load(f)
 
     # Извлекаем ключ по порядку
