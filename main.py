@@ -1,33 +1,23 @@
-import os
-from engine_classes import Engine, HH, SuperJob
-from utils import check_search, get_top_vacancies_by_salary
+from utils import get_key_by_order
 
 
 def main():
+    print(f"\n\
+          1 - APPTRIX\n\
+          2 - ТД ГраСС\n\
+          3 - АО НТЦ Атлас\n\
+          4 - СБЕР\n\
+          5 - OPTIMAL CITY Technologies\n\
+          6 - Интеллектуальные системы\n\
+          7 - ProAnalytics\n\
+          8 - Технические Системы\n\
+          9 - Янтарь-Айти\n\
+          10 - Нордавинд")
 
-    global all_vacancies
-    path = os.path.join('data_file.json')
-    connector = Engine.get_connector(path)  # создаем экземпляр класса Connector функцией get_connector из класса Engine
+    filename = 'employer_id.json'
+    order = int(input('Укажите № компании, данные которой вы хотели посмотреть'))
 
-    search_keyword = input('Введите ключевое слово поиска')
-
-    hh = HH(search_keyword)
-    sj = SuperJob(search_keyword)
-    if check_search(hh, sj):
-        h = hh.vacancies
-        s = sj.vacancies
-        all_vacancies = h + s
-        connector.insert(path, all_vacancies)
-
-    top_count = input('Введите колличество выводимых на экран вакансий')
-    if not top_count.isdigit() or int(top_count) <= 0:
-        print('Необходимо ввести целое число ')
-
-    else:
-        top_count = int(top_count)
-
-    top_1 = get_top_vacancies_by_salary(all_vacancies, top_count)
-    print(top_1)
+    get_key_by_order(filename, order)
 
 
 if __name__ == '__main__':

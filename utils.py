@@ -1,30 +1,41 @@
-from engine_classes import HH, SuperJob
-from jobs_classes import HHVacancy, SJVacancy
+import json
+from datetime import datetime
+from HH_ID import HH
 
 
-def check_search(hh: HH, sj: SuperJob) -> bool:
-    """Проверка на существование вакансии"""
-    return hh.get_request()['items'] != [] or sj.get_request()['objects'] != []
+def get_key_by_order(filename, order):
+    with open(filename, 'r') as f:
+        data = json.load(f)
+
+    # Извлекаем ключ по порядку
+    key = list(data.keys())[order - 1]
+
+    return key
 
 
-def get_only_str_vacancies(data):
-    """Складывает в список все вакансии экземпляров класссов HHVacancy и SJVacancy"""
-    str_vacancies_list = []
-    hh = HHVacancy
-    sj = SJVacancy
-    for item in data:
-        if item['from'] == 'HeadHunter':
-            str_vacancies_list.append(hh(item))
-        else:
-            str_vacancies_list.append(sj(item))
-    return str_vacancies_list
+def formatting_vakansy(key: str):
+    hh = HH(key)
+    vacansy_list = hh.get_request()
+    vacansy_hh = []
+    for i in vacansy_list[0]['items']:
+        emp_id = i['employer']['id'], i['employer']['name']
+        name = i['name']
+        url = i['apply_alternate_url']
+        description = i['snippet']['requirement'], i['snippet']['responsibility']
+        city = i['area']['name']
+        publication_date = i['published_at']
+        solary_from = i['salary']['from'] if i['salary'] else None
+        solary_to = i['salary']['to'] if i['salary'] else None
+        solary_currency = i['salary']['currency'] if i['salary'] else None
+
+        date_obj = datetime.strptime(publication_date, '%Y-%m-%dT%H:%M:%S%z')
+        formatted_date = date_obj.strftime('%d.%m.%Y %H:%M:%S')
+
+        data_dict = emp_id, name, url, description, city, formatted_date, solary_from, solary_to, solary_currency
+        vacansy_hh.append(data_dict)
+
+    # print(vacansy_hh)
+    return vacansy_hh
 
 
-def get_top_vacancies_by_salary(vacancies, top_count=5):
-    """Сортирует топ вакансий по зарплате"""
-    return sorted(vacancies, key=lambda i: i.max_salary, reverse=True)[:top_count]
-
-
-def get_top_vacancies_by_date(vacancies, top_count=5):
-    """Сортирует топ вакансий по датам"""
-    return sorted(vacancies, key=lambda i: i.Vacancy.date_published, reverse=True)[:top_count]
+formatting_vakansy("1073798")
