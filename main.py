@@ -14,11 +14,12 @@ def main():
           9 - Янтарь-Айти\n\
           10 - Нордавинд")
 
-    filename = 'employer_id.json'
-    order = int(input('Укажите № компании, данные которой вы хотели посмотреть'))
-
-    get_key_by_order(filename, order)
-
 
 if __name__ == '__main__':
     main()
+
+filename = 'employer_id.json'
+order = int(input('Укажите № компании, данные которой вы хотели посмотреть'))
+
+get_key_by_order(filename, order)
+

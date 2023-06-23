@@ -4,7 +4,7 @@ from HH_ID import HH
 
 
 def get_key_by_order(filename, order):
-    with open(filename, 'r', encoding="cp1251") as f:
+    with open(filename, 'r', encoding='UTF-8') as f:
         data = json.load(f)
 
     # Извлекаем ключ по порядку
@@ -18,7 +18,8 @@ def formatting_vakansy(key: str):
     vacansy_list = hh.get_request()
     vacansy_hh = []
     for i in vacansy_list[0]['items']:
-        emp_id = i['employer']['id'], i['employer']['name']
+        employer_id = i['employer']['id']
+        employer_name = i['employer']['name']
         name = i['name']
         url = i['apply_alternate_url']
         description = i['snippet']['requirement'], i['snippet']['responsibility']
@@ -31,11 +32,12 @@ def formatting_vakansy(key: str):
         date_obj = datetime.strptime(publication_date, '%Y-%m-%dT%H:%M:%S%z')
         formatted_date = date_obj.strftime('%d.%m.%Y %H:%M:%S')
 
-        data_dict = emp_id, name, url, description, city, formatted_date, solary_from, solary_to, solary_currency
+        data_dict = employer_id, employer_name, name, url, description, city, formatted_date, solary_from, solary_to, \
+            solary_currency
         vacansy_hh.append(data_dict)
 
     # print(vacansy_hh)
     return vacansy_hh
 
 
-formatting_vakansy("1073798")
+# formatting_vakansy("1073798")

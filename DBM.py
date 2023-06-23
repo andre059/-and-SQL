@@ -42,7 +42,8 @@ class DBManager:
                                 vacancy_name varchar(200) UNIQUE NOT NULL,
                                 individual_employer-number int REFERENCES employers(employer_id) NOT NULL,
                                 description TEXT,
-                                city varchar(100),
+                                city varchar(50),
+                                publication_date date,
                                 url text,
                                 solary int
                             )
@@ -50,7 +51,6 @@ class DBManager:
 
         conn.commit()
         conn.close()
-
 
     def get_companies_and_vacancies_count(self):
         """Получает список всех компаний и количество вакансий у каждой компании"""
@@ -146,6 +146,7 @@ def get_vacancies_with_keyword(self):
         cur.execute("SELECT * FROM selection_of_vacancies")
     conn.close()
 
+
 def save_data_to_database(data: str, database_name: str, params: dict):
     """Запись в таблицы."""
 
@@ -166,12 +167,10 @@ def save_data_to_database(data: str, database_name: str, params: dict):
         for i in formatting_vakansy(data):
             cur.execute(
                 """
-                INSERT INTO vacancies (vacancy_id, vacancy_name, individual_employer-number, description, city, url, 
-                solary)
-                VALUES (%s, %s, %s, %s, %s, %s, %s)
+                INSERT INTO vacancies (vacancy_id, vacancy_name, individual_employer-number, description, city, 
+                publication_date, url, solary)
+                VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
                 RETURNING vacancy_id
                 """, i)
             cur.execute("SELECT * FROM vacancies")
     conn.close()
-
-
