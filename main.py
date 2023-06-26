@@ -1,3 +1,5 @@
+from DBM import DBManager
+from config import config
 from utils import get_key_by_order
 
 
@@ -14,12 +16,17 @@ def main():
           9 - Янтарь-Айти\n\
           10 - Нордавинд")
 
+    params = config()
+    rt = DBManager('postgres2', params)
+    rt.create_database()
+
+    filename = 'employer_id.json'
+    order = int(input('Укажите № компании, данные которой вы хотели посмотреть'))
+
+    get_key_by_order(filename, order)
 
 if __name__ == '__main__':
     main()
 
-filename = 'employer_id.json'
-order = int(input('Укажите № компании, данные которой вы хотели посмотреть'))
 
-get_key_by_order(filename, order)
 
