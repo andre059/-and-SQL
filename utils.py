@@ -3,7 +3,7 @@ from datetime import datetime
 from HH_ID import HH
 
 
-def get_key_by_order(filename, order):
+def key_by_order(filename, order):
     with open(filename, 'r', encoding='UTF-8') as f:
         data = json.load(f)
 
@@ -17,7 +17,7 @@ def formatting_vakansy(key: str):
     hh = HH(key)
     vacansy_list = hh.get_request()
     vacansy_hh = []
-    for i in vacansy_list[0]['items']:
+    for i in vacansy_list[0]["items"]:
         employer_id = i['employer']['id']
         employer_name = i['employer']['name']
         name = i['name']

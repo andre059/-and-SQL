@@ -21,8 +21,7 @@ class HH:
         return self.vacancy_list
 
 
-# search_keyword = "5375272"
-# rt = HH("1073798")
-# rt.get_request()
+rt = HH("1073798")
+rt.get_request()
 # rt.get_info()
 # rt.get_vacancies()

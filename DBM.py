@@ -8,6 +8,7 @@ class DBManager:
     def __init__(self, database_name: str, params: dict):
         self.database_name = database_name
         self.params = params
+        # self.date = date
 
     def create_database(self):
         """Создание базы данных и таблиц."""
@@ -49,24 +50,24 @@ class DBManager:
         conn.commit()
         conn.close()
 
-    def save_data_to_database(self: str, database_name: str, params: dict):
+    def save_data_to_database(self, date):
         """Запись в таблицы."""
 
-        conn = psycopg2.connect(dbname=database_name, **params)
+        conn = psycopg2.connect(dbname=self.database_name, **self.params)
 
         with conn.cursor() as cur:
-            for i in formatting_vakansy(self):
-                cur.execute(
+            for i in date:
+                cur.executemany(
                         """
                         INSERT INTO employers (employer_id, employer_name)
                         VALUES (%s, %s)
-                        RETURNING individual_employer-number
+                        RETURNING employer_id
                         """, i)
 
         conn.close()
 
         with conn.cursor() as cur:
-            for i in formatting_vakansy(self):
+            for i in date:
                 cur.executemany(
                             """
                             INSERT INTO vacancies (vacancy_id, vacancy_name, employer_id, employer_name, description, 
