@@ -36,7 +36,7 @@ class DBManager:
                                 vacancy_id int UNIQUE,
                                 vacancy_name varchar(200) UNIQUE NOT NULL,
                                 employer_id int,
-                                employer_name varchar(200) NOT NULL
+                                employer_name varchar(200) NOT NULL,
                                 description TEXT,
                                 city varchar(50),
                                 publication_date date,
