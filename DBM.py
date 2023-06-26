@@ -1,5 +1,3 @@
-from typing import Any
-
 import psycopg2
 
 from utils import formatting_vakansy
@@ -33,7 +31,7 @@ class DBManager:
                         """)
 
         with conn.cursor() as cur:
-            cur.execute("""CREATE TABLE IF NOT EXISTS  vacancies
+            cur.execute("""CREATE TABLE IF NOT EXISTS vacancies
                             (
                                 vacancy_id int UNIQUE,
                                 vacancy_name varchar(200) UNIQUE NOT NULL,
@@ -71,8 +69,8 @@ class DBManager:
             for i in formatting_vakansy(self):
                 cur.executemany(
                             """
-                            INSERT INTO vacancies (vacancy_id, vacancy_name, employer_id, employer_name, description, city, 
-                            publication_date, url, solary)
+                            INSERT INTO vacancies (vacancy_id, vacancy_name, employer_id, employer_name, description, 
+                            city, publication_date, url, solary)
                             VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)
                             RETURNING vacancy_id
                             """, i)

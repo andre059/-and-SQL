@@ -17,7 +17,7 @@ def main():
           10 - Нордавинд")
 
     params = config()
-    rt = DBManager('postgres2', params)
+    rt = DBManager('postgres1', params)
     rt.create_database()
 
     filename = 'employer_id.json'
@@ -25,8 +25,6 @@ def main():
 
     get_key_by_order(filename, order)
 
+
 if __name__ == '__main__':
     main()
-
-
-
