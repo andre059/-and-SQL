@@ -22,14 +22,15 @@ class DBManager:
 
         conn.close()
 
-        conn = psycopg2.connect(dbname=self.database_name, **self.params)
-        with conn.cursor() as cur:
-            cur.execute("""CREATE TABLE IF NOT EXISTS employers
-                            (
-                                employer_id int PRIMARY KEY,
-                                employer_name varchar(200) NOT NULL
-                            )
-                        """)
+        with psycopg2.connect(dbname=self.database_name, **self.params) as conn:
+            with conn.cursor() as cur:
+                cur.execute("""CREATE TABLE IF NOT EXISTS employers
+                                (
+                                    employer_id int PRIMARY KEY,
+                                    employer_name varchar(200) NOT NULL
+                                )
+                            """)
+        conn.commit()
 
         with conn.cursor() as cur:
             cur.execute("""CREATE TABLE IF NOT EXISTS vacancies
@@ -53,28 +54,26 @@ class DBManager:
     def save_data_to_database(self, date):
         """Запись в таблицы."""
 
-        conn = psycopg2.connect(dbname=self.database_name, **self.params)
+        with psycopg2.connect(dbname=self.database_name, **self.params) as conn:
+            with conn.cursor() as cur:
+                for i in date:
+                    # print(i)
+                    cur.executemany(
+                                """
+                                INSERT INTO employers (employer_id, employer_name)
+                                VALUES (%s, %s)
+                                RETURNING employer_id
+                                """, (i,))
 
-        with conn.cursor() as cur:
-            for i in date:
-                cur.executemany(
-                        """
-                        INSERT INTO employers (employer_id, employer_name)
-                        VALUES (%s, %s)
-                        RETURNING employer_id
-                        """, i)
-
-        conn.close()
-
-        with conn.cursor() as cur:
-            for i in date:
-                cur.executemany(
-                            """
-                            INSERT INTO vacancies (vacancy_id, vacancy_name, employer_id, employer_name, description, 
-                            city, publication_date, url, solary)
-                            VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)
-                            RETURNING vacancy_id
-                            """, i)
+            with conn.cursor() as cur:
+                for i in date:
+                    cur.executemany(
+                                """
+                                INSERT INTO vacancies (vacancy_id, vacancy_name, employer_id, employer_name, description, 
+                                city, publication_date, url, solary)
+                                VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)
+                                RETURNING vacancy_id
+                                """, i)
 
         conn.close()
 
