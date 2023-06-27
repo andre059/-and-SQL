@@ -20,7 +20,7 @@ def formatting_vakansy(key: str):
     for i in vacansy_list[0]["items"]:
         employer_id = i['employer']['id']
         employer_name = i['employer']['name']
-        name = i['name']
+        vacancy_name = i['name']
         url = i['apply_alternate_url']
         description = i['snippet']['requirement'], i['snippet']['responsibility']
         city = i['area']['name']
@@ -32,8 +32,8 @@ def formatting_vakansy(key: str):
         date_obj = datetime.strptime(publication_date, '%Y-%m-%dT%H:%M:%S%z')
         formatted_date = date_obj.strftime('%d.%m.%Y %H:%M:%S')
 
-        data_dict = employer_id, employer_name, name, url, description, city, formatted_date, solary_from, solary_to, \
-            solary_currency
+        data_dict = employer_id, employer_name, vacancy_name, url, description, city, formatted_date, solary_from, \
+            solary_to, solary_currency
         vacansy_hh.append(data_dict)
 
     # print(vacansy_hh)
