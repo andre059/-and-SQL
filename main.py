@@ -16,22 +16,23 @@ def main():
           7 - ProAnalytics\n\
           8 - Технические Системы\n\
           9 - Янтарь-Айти\n\
-          10 - Нордавинд")
+          10 - Нордавинд\n")
 
     filename = 'employer_id.json'
     order = int(input('Укажите № компании, данные которой вы хотели посмотреть'))
+    word = input("Укажите слово, которое должно встречаться в вакансиях")
 
     key = key_by_order(filename, order)
     date = formatting_vakansy(key)
 
-    dbm = DBManager('postgres2', params, date)
+    dbm = DBManager('postgres2', params, date, word)
     dbm.create_database()
     dbm.save_data_to_database()
-    # dbm.get_companies_and_vacancies_count()
-    # dbm.get_all_vacancies()
-    # dbm.get_avg_salary()
-    # dbm.get_vacancies_with_higher_salary()
-    # dbm.get_vacancies_with_keyword()
+    dbm.get_companies_and_vacancies_count()
+    dbm.get_all_vacancies()
+    dbm.get_avg_salary()
+    dbm.get_vacancies_with_higher_salary()
+    dbm.get_vacancies_with_keyword()
 
 
 if __name__ == '__main__':

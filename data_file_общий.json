@@ -53,8 +53,8 @@
         },
         "response_url": null,
         "sort_point_distance": null,
-        "published_at": "2023-06-25T12:18:08+0300",
-        "created_at": "2023-06-25T12:18:08+0300",
+        "published_at": "2023-06-28T12:18:08+0300",
+        "created_at": "2023-06-28T12:18:08+0300",
         "archived": false,
         "apply_alternate_url": "https://hh.ru/applicant/vacancy_response?vacancyId=82030362",
         "insider_interview": null,
@@ -202,110 +202,9 @@
           "id": "full",
           "name": "\u041f\u043e\u043b\u043d\u0430\u044f \u0437\u0430\u043d\u044f\u0442\u043e\u0441\u0442\u044c"
         }
-      },
-      {
-        "id": "81259614",
-        "premium": false,
-        "name": "DevOps-\u0438\u043d\u0436\u0435\u043d\u0435\u0440",
-        "department": null,
-        "has_test": false,
-        "response_letter_required": false,
-        "area": {
-          "id": "1",
-          "name": "\u041c\u043e\u0441\u043a\u0432\u0430",
-          "url": "https://api.hh.ru/areas/1"
-        },
-        "salary": {
-          "from": null,
-          "to": 180000,
-          "currency": "RUR",
-          "gross": false
-        },
-        "type": {
-          "id": "open",
-          "name": "\u041e\u0442\u043a\u0440\u044b\u0442\u0430\u044f"
-        },
-        "address": {
-          "city": "\u041c\u043e\u0441\u043a\u0432\u0430",
-          "street": "\u0443\u043b\u0438\u0446\u0430 \u041a\u0440\u044b\u043c\u0441\u043a\u0438\u0439 \u0412\u0430\u043b",
-          "building": "3\u04412",
-          "lat": 55.729316,
-          "lng": 37.609173,
-          "description": null,
-          "raw": "\u041c\u043e\u0441\u043a\u0432\u0430, \u0443\u043b\u0438\u0446\u0430 \u041a\u0440\u044b\u043c\u0441\u043a\u0438\u0439 \u0412\u0430\u043b, 3\u04412",
-          "metro": {
-            "station_name": "\u041e\u043a\u0442\u044f\u0431\u0440\u044c\u0441\u043a\u0430\u044f",
-            "line_name": "\u041a\u043e\u043b\u044c\u0446\u0435\u0432\u0430\u044f",
-            "station_id": "5.93",
-            "line_id": "5",
-            "lat": 55.729264,
-            "lng": 37.611049
-          },
-          "metro_stations": [
-            {
-              "station_name": "\u041e\u043a\u0442\u044f\u0431\u0440\u044c\u0441\u043a\u0430\u044f",
-              "line_name": "\u041a\u043e\u043b\u044c\u0446\u0435\u0432\u0430\u044f",
-              "station_id": "5.93",
-              "line_id": "5",
-              "lat": 55.729264,
-              "lng": 37.611049
-            }
-          ],
-          "id": "12070914"
-        },
-        "response_url": null,
-        "sort_point_distance": null,
-        "published_at": "2023-06-25T17:23:37+0300",
-        "created_at": "2023-06-25T17:23:37+0300",
-        "archived": false,
-        "apply_alternate_url": "https://hh.ru/applicant/vacancy_response?vacancyId=81259614",
-        "insider_interview": null,
-        "url": "https://api.hh.ru/vacancies/81259614?host=hh.ru",
-        "adv_response_url": null,
-        "alternate_url": "https://hh.ru/vacancy/81259614",
-        "relations": [],
-        "employer": {
-          "id": "9312948",
-          "name": "OPTIMAL CITY Technologies",
-          "url": "https://api.hh.ru/employers/9312948",
-          "alternate_url": "https://hh.ru/employer/9312948",
-          "logo_urls": {
-            "240": "https://hhcdn.ru/employer-logo/6044730.jpeg",
-            "90": "https://hhcdn.ru/employer-logo/6044729.jpeg",
-            "original": "https://hhcdn.ru/employer-logo-original/1106031.jpg"
-          },
-          "vacancies_url": "https://api.hh.ru/vacancies?employer_id=9312948",
-          "accredited_it_employer": false,
-          "trusted": true
-        },
-        "snippet": {
-          "requirement": "\u0414\u043b\u044f \u044d\u0442\u043e\u0439 \u0432\u0430\u043a\u0430\u043d\u0441\u0438\u0438 \u0443 \u0432\u0430\u0441 \u0434\u043e\u043b\u0436\u0435\u043d \u0431\u044b\u0442\u044c \u043e\u043f\u044b\u0442: \u0411\u0443\u0434\u0435\u0442 \u0437\u0434\u043e\u0440\u043e\u0432\u043e, \u0435\u0441\u043b\u0438 \u0432\u044b \u0437\u043d\u0430\u0435\u0442\u0435 Ansible, Grafana/Prometheus \u0438 Gitlab. ",
-          "responsibility": "\u0410\u0434\u043c\u0438\u043d\u0438\u0441\u0442\u0440\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u044f \u0441\u0435\u0440\u0432\u0435\u0440\u043e\u0432 \u043d\u0430 Linux \u0441 \u043e\u0431\u0435\u0441\u043f\u0435\u0447\u0435\u043d\u0438\u0435\u043c \u0438\u0445 \u0438\u043d\u0444\u043e\u0440\u043c\u0430\u0446\u0438\u043e\u043d\u043d\u043e\u0439 \u0431\u0435\u0437\u043e\u043f\u0430\u0441\u043d\u043e\u0441\u0442\u0438. \u0420\u0430\u0431\u043e\u0442\u044b \u0441 \u043a\u043e\u043d\u0442\u0435\u0439\u043d\u0435\u0440\u0430\u043c\u0438 (\u043d\u0430\u043f\u0440\u0438\u043c\u0435\u0440, \u0441 Docker). \u0420\u0430\u0431\u043e\u0442\u044b \u0441 CI\\CD. "
-        },
-        "contacts": null,
-        "schedule": null,
-        "working_days": [],
-        "working_time_intervals": [],
-        "working_time_modes": [],
-        "accept_temporary": false,
-        "professional_roles": [
-          {
-            "id": "160",
-            "name": "DevOps-\u0438\u043d\u0436\u0435\u043d\u0435\u0440"
-          }
-        ],
-        "accept_incomplete_resumes": false,
-        "experience": {
-          "id": "between1And3",
-          "name": "\u041e\u0442 1 \u0433\u043e\u0434\u0430 \u0434\u043e 3 \u043b\u0435\u0442"
-        },
-        "employment": {
-          "id": "full",
-          "name": "\u041f\u043e\u043b\u043d\u0430\u044f \u0437\u0430\u043d\u044f\u0442\u043e\u0441\u0442\u044c"
-        }
       }
     ],
-    "found": 3,
+    "found": 2,
     "pages": 1,
     "per_page": 20,
     "page": 0,
